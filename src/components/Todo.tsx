@@ -2,6 +2,7 @@ import { AddTaskForm } from './AddTaskForm'
 import { SearchTaskForm } from './SearchTaskForm'
 import { TodoInfo } from './TodoInfo'
 import { TodoList } from './TodoList'
+import { useState } from 'react'
 
 export type Task = {
   id: string
@@ -10,10 +11,12 @@ export type Task = {
 }
 
 export const Todo = () => {
-  const tasks: Task[] = [
+  const [tasks, setTasks] = useState<Task[]>([
     { id: '1', title: 'Купить молоко', isDone: false },
     { id: '2', title: 'Погладить кота', isDone: true },
-  ]
+  ])
+
+  const [newTaskTitle, setNewTaskTitle] = useState<string>('')
 
   const deleteAllTasks = () => {
     console.log('Удаляем все задачи!')
@@ -32,13 +35,26 @@ export const Todo = () => {
   }
 
   const addTask = () => {
-    console.log('Задача добавлена!')
+    if (newTaskTitle.trim().length > 0) {
+      const newTask = {
+        id: crypto?.randomUUID() ?? Date.now().toString(),
+        title: newTaskTitle,
+        isDone: false,
+      }
+
+      setTasks((prev) => [...prev, newTask])
+      setNewTaskTitle('')
+    }
   }
 
   return (
     <div className="todo">
       <h1 className="todo__title">To Do List</h1>
-      <AddTaskForm addTask={addTask} />
+      <AddTaskForm
+        addTask={addTask}
+        newTaskTitle={newTaskTitle}
+        setNewTaskTitle={setNewTaskTitle}
+      />
       <SearchTaskForm onSearchInput={filterTasks} />
       <TodoInfo
         total={tasks.length}

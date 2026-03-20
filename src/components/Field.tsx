@@ -1,15 +1,16 @@
 import clsx from 'clsx'
-import type { InputHTMLAttributes } from 'react'
+import type { HTMLInputTypeAttribute, InputHTMLAttributes } from 'react'
 
 type FieldProps = {
   className?: string
   id: string
   label: string
-  type?: string
+  type?: HTMLInputTypeAttribute
+  value?: string
   onInput?: InputHTMLAttributes<HTMLInputElement>['onInput']
 }
 
-export const Field = ({ className, id, label, type, onInput }: FieldProps) => {
+export const Field = ({ className, id, label, type, value, onInput }: FieldProps) => {
   return (
     <div className={clsx('field', className)}>
       <label
@@ -24,6 +25,7 @@ export const Field = ({ className, id, label, type, onInput }: FieldProps) => {
         placeholder=" "
         autoComplete="off"
         type={type}
+        value={value}
         onInput={onInput}
       />
     </div>
