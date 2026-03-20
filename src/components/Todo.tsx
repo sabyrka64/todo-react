@@ -27,7 +27,9 @@ export const Todo = () => {
   }
 
   const deleteTask = (taskId: string) => {
-    console.log(`Удаляем задачу с id: ${taskId}`)
+    setTasks(
+      tasks.filter((item) => item.id !== taskId)
+    )
   }
 
   const toggleTaskComplete = (taskId: string, isDone: boolean) => {
