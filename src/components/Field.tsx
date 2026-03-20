@@ -5,9 +5,10 @@ type FieldProps = {
   className?: string
   id: string
   label: string
-} & InputHTMLAttributes<HTMLInputElement>
+  type: string
+} & Pick<InputHTMLAttributes<HTMLInputElement>, 'onInput'>
 
-export const Field = ({ className, id, label, ...props }: FieldProps) => {
+export const Field = ({ className, id, label, type, onInput }: FieldProps) => {
   return (
     <div className={clsx('field', className)}>
       <label
@@ -21,7 +22,8 @@ export const Field = ({ className, id, label, ...props }: FieldProps) => {
         id={id}
         placeholder=" "
         autoComplete="off"
-        {...props}
+        type={type}
+        onInput={onInput}
       />
     </div>
   )
