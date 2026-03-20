@@ -5,8 +5,9 @@ type FieldProps = {
   className?: string
   id: string
   label: string
-  type: string
-} & Pick<InputHTMLAttributes<HTMLInputElement>, 'onInput'>
+  type?: string
+  onInput?: InputHTMLAttributes<HTMLInputElement>['onInput']
+}
 
 export const Field = ({ className, id, label, type, onInput }: FieldProps) => {
   return (
