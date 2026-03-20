@@ -1,14 +1,10 @@
-import { Field } from './components/Field'
-import { Button } from './components/Button'
+import { AddTaskForm } from './components/AddTaskForm'
 
 export const App = () => {
   return (
     <div className="todo">
       <h1 className="todo__title">To Do List</h1>
-      <form className="todo__form">
-        <Field />
-        <Button />
-      </form>
+      <AddTaskForm />
       <form className="todo__form">
         <div className="todo__field field">
           <label
