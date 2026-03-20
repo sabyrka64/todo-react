@@ -1,6 +1,11 @@
 import { TodoItem } from './TodoItem'
+import type { TodoItemType } from './Todo'
 
-export const TodoList = () => {
+type TodoListProps = {
+  tasks: TodoItemType[]
+}
+
+export const TodoList = ({ tasks }: TodoListProps) => {
   const hasTasks = true
 
   if (!hasTasks) {
@@ -9,18 +14,13 @@ export const TodoList = () => {
 
   return (
     <ul className="todo__list">
-      <TodoItem
-        className="todo__item"
-        id="task-1"
-        title="Купить молоко"
-        isDone={false}
-      />
-      <TodoItem
-        className="todo__item"
-        id="task-2"
-        title="Погладить кота"
-        isDone
-      />
+      {tasks.map((task) => (
+        <TodoItem
+          className="todo__item"
+          key={task.id}
+          {...task}
+        />
+      ))}
     </ul>
   )
 }
