@@ -9,7 +9,7 @@ export const AddTaskForm = () => {
         label="New task title"
         id="new-task"
       />
-      <Button />
+      <Button type="submit">Add</Button>
     </form>
   )
 }
