@@ -28,12 +28,20 @@ export const Todo = () => {
 
   const deleteTask = (taskId: string) => {
     setTasks(
-      tasks.filter((item) => item.id !== taskId)
+      tasks.filter((item) => item.id !== taskId),
     )
   }
 
   const toggleTaskComplete = (taskId: string, isDone: boolean) => {
-    console.log(`Задача ${taskId} ${isDone ? 'выполнена' : 'не выполнена'}`)
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === taskId) {
+          return { ...task, isDone }
+        }
+
+        return task
+      }),
+    )
   }
 
   const filterTasks = (query: string) => {
