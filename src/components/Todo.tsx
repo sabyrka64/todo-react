@@ -19,8 +19,12 @@ export const Todo = () => {
     console.log('Удаляем все задачи!')
   }
 
-  const deleteTask = (id: string) => {
-    console.log(`Удаляем задачу с id: ${id}`)
+  const deleteTask = (taskId: string) => {
+    console.log(`Удаляем задачу с id: ${taskId}`)
+  }
+
+  const toggleTaskComplete = (taskId: string, isDone: boolean) => {
+    console.log(`Задача ${taskId} ${isDone ? 'выполнена' : 'не выполнена'}`)
   }
 
   return (
@@ -36,6 +40,7 @@ export const Todo = () => {
       <TodoList
         tasks={tasks}
         onDeleteTaskButtonClick={deleteTask}
+        onTaskCompleteChange={toggleTaskComplete}
       />
     </div>
   )

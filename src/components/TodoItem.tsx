@@ -5,10 +5,18 @@ type TodoItemProps = {
   id: string
   title: string
   isDone: boolean
-  onDeleteTaskButtonClick: (id: string) => void
+  onDeleteTaskButtonClick: (taskId: string) => void
+  onTaskCompleteChange: (taskId: string, isDone: boolean) => void
 }
 
-export const TodoItem = ({ className, id, title, isDone, onDeleteTaskButtonClick }: TodoItemProps) => {
+export const TodoItem = ({
+  className,
+  id,
+  title,
+  isDone,
+  onDeleteTaskButtonClick,
+  onTaskCompleteChange,
+}: TodoItemProps) => {
   return (
     <li className={clsx('todo-item', className)}>
       <input
@@ -16,7 +24,9 @@ export const TodoItem = ({ className, id, title, isDone, onDeleteTaskButtonClick
         id={id}
         type="checkbox"
         checked={isDone}
-        readOnly
+        onChange={({ target }) => {
+          onTaskCompleteChange(id, target.checked)
+        }}
       />
       <label
         className="todo-item__label"
