@@ -1,8 +1,8 @@
 import { TodoItem } from './TodoItem'
-import type { TodoItemType } from './Todo'
+import type { Task } from './Todo'
 
 type TodoListProps = {
-  tasks: TodoItemType[]
+  tasks: Task[]
 }
 
 export const TodoList = ({ tasks }: TodoListProps) => {

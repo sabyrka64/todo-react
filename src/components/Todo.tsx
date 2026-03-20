@@ -3,14 +3,14 @@ import { SearchTaskForm } from './SearchTaskForm'
 import { TodoInfo } from './TodoInfo'
 import { TodoList } from './TodoList'
 
-export type TodoItemType = {
+export type Task = {
   id: string
   title: string
   isDone: boolean
 }
 
 export const Todo = () => {
-  const tasks: TodoItemType[] = [
+  const tasks: Task[] = [
     { id: '1', title: 'Купить молоко', isDone: false },
     { id: '2', title: 'Погладить кота', isDone: true },
   ]
