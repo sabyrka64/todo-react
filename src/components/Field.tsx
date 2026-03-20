@@ -7,7 +7,7 @@ type FieldProps = {
   label: string
 } & InputHTMLAttributes<HTMLInputElement>
 
-export const Field = ({ className = '', id, label, ...props }: FieldProps) => {
+export const Field = ({ className, id, label, ...props }: FieldProps) => {
   return (
     <div className={clsx('field', className)}>
       <label
