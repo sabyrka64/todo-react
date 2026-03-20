@@ -5,9 +5,10 @@ type TodoItemProps = {
   id: string
   title: string
   isDone: boolean
+  onDeleteTaskButtonClick: (id: string) => void
 }
 
-export const TodoItem = ({ className, id, title, isDone }: TodoItemProps) => {
+export const TodoItem = ({ className, id, title, isDone, onDeleteTaskButtonClick }: TodoItemProps) => {
   return (
     <li className={clsx('todo-item', className)}>
       <input
@@ -27,6 +28,7 @@ export const TodoItem = ({ className, id, title, isDone }: TodoItemProps) => {
         className="todo-item__delete-button"
         aria-label="Delete"
         title="Delete"
+        onClick={() => onDeleteTaskButtonClick(id)}
       >
         <svg
           width="20"
